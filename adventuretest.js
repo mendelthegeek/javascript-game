@@ -80,8 +80,8 @@ var player = new Player('player');
 function displayStats() {
 	var statsHtml = "";
 	for ( var prop in player ) {
-		if ( prop != "inFight" && prop != "currentLocation" && prop != "displayText" && prop != "id" && prop != "healthid"
-			&& prop != "health" ) {
+		if ( prop != "inFight" && prop != "currentLocation" && prop != "displayText" && prop != "id" && prop != "healthid" &&
+			prop != "health" ) {
 			var statDisplay = prop.replace(/([A-Z]+)/, camelCaseToSpacedString );
 			statsHtml += "<p id = 'player_" + prop + "'>" + statDisplay + ": " + player[prop] + "</p>";
 		}
@@ -223,7 +223,7 @@ function createMonster(name,startingPoint,level) {
 }
 
 $(document).on("click", '.boardSpot',function (trigger) {
-	valmov = validMove( parseInt( trigger.target.id ) , parseInt( player.currentLocation ) );
+	valmov = validMove( parseInt( trigger.target.id,10 ) , parseInt( player.currentLocation,10 ) );
 	if ( valmov ) {
 		
 		if ( !gameOn ) return;
