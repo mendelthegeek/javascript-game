@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	text-align: center;	
+}
+
+table{
+	border-collapse: collapse;
+	border-spacing: 1px;
+	margin:20px auto;
+	background-image: url('http://fc05.deviantart.net/fs70/f/2011/078/6/2/seamless_cartoon_grass_texture_by_mbrockwell-d3byyeg.jpg');
+	background-size: cover;
+}
+
+.stats {
+	margin: 15px auto;
+	width: 350px;
+}
+
+.stats p{
+	margin: 1px;
+	text-align:left;
+	width: 100%px;
+	/*height:10px;
+	background-color: #567e34;
+	width: 10px;*/
+}
+
+#displayHealth {
+	color: blue;
+	z-index: 3;
+	position: fixed;
+	border: 1px solid black;
+	background-color:#FCE4C2;
+	padding: 0 7px;
+	font-family:"Times New Roman",Times,serif;
+}
+
+#displayHealth span{
+	color:red;
+	font-weight: bold;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
+#player{
+	opacity:100;
+}
+
+.healthLost{
+	position: absolute;
+	padding:0;
+	left: 0;
+	top: -10px;
+	z-index:2;
+	width:100%;
+	
+	opacity:0;
+	
+	font-family: cursive;
+	font-size: 20px;
+	font-weight: bold;
+	text-align:center;
+	color:red;
+	
+	pointer-events:none;
+}
+
+.healthLostTest{
+    left:5px;
+    z-index:2;
+    font-family: cursive;
+    font-size: 20px;
+    position:absolute;
+    color:red;
+    font-weight:bold;
+}
+
+.boardSpot{
+	/*border: 1px solid black;*/
+	height: 45px;
+	width: 50px;
+	text-align: center;
+	position: relative;
+}
+
+img {
+	left: 0;
+	top: 0;
+	height:100%;
+	width:100%;
+	position: relative;
+	z-index:0;
+}
+
+.onTop{
+	z-index:1;	
+}
+
+.credits{
+	margin: 10px;
+}
+
+#instructions{
+	color: red;
+	font-size: 25px;
+	margin-top: 75px;
+}
