@@ -409,56 +409,56 @@ function attack( attacker, defender ) {
 	//	});
 }
 
-function fightAnimation( attacker, defender ) {
-		
-	direction = validMove( parseInt (defender.currentLocation ) , parseInt (attacker.currentLocation ) );
+function fightAnimation(attacker, defender, x) {
 
-	var monsterId = (defender.id).replace(/([\[\]])/g, '\\$1');
+	direction = validMove(parseInt(defender.closest("div").attr("id"), 10), parseInt(attacker.closest("div").attr("id"), 10));
+
+	switch (direction) {
+		case "right":
+			attacker.animate({ left: "+=" + (scale / 10) }, 250, function () {
+				displayHitsplat(defender, x);
+				attacker.animate({ left: "-=" + (scale / 10) }, 500 );
+			});
+			break;
+		case "left":
+			attacker.animate({ left: "-=" + (scale / 10) }, 250, function () {
+				displayHitsplat(defender, x);
+				attacker.animate({ left: "+=" + (scale / 10) }, 500 );
+			});
+			break;
+		case "up":
+			attacker.animate({ top: "-=" + (scale / 10) }, 250, function () {
+				displayHitsplat(defender, x);
+				attacker.animate({ top: "+=" + (scale / 10) }, 500 );
+			});
+			break;
+		case "down":
+			attacker.animate({ top: "+=" + (scale / 10) }, 250, function () {
+				displayHitsplat(defender, x);
+				attacker.animate({ top: "-=" + (scale / 10) }, 500 );
+			});
+			break;
+	}
+}
+
+function displayHitsplat(defender, healthLost){	
+	var display = $("<div class='healthLostTest'>");
+	display.html(healthLost);
+	display.css("top",5);
 	
-	//console.log(monsterId);
-	
-		switch(direction){
-			case "right":
-				$( '#' + attacker.id).animate( { left: "+=" + ( scale / 10 ) },100,function(){
-					$( '#' + attacker.id).animate( { left: "-=" + ( scale / 10 ) },500,function() {
-						$('#' + monsterId).animate( { left: "-=" + ( scale / 10 ) },250,function(){
-							$( '#' + monsterId).animate( { left: "+=" + ( scale / 10 ) },500,function() {
-							});
-						});
-					});
-				});
-				break;
-			case "left":
-				$('#' + attacker.id).animate( { left: "-=" + ( scale / 10 ) },250,function(){
-					$( '#' + attacker.id).animate( { left: "+=" + ( scale / 10 ) },500,function() {
-						$( '#' + monsterId).animate( { left: "+=" + ( scale / 10 ) },250,function() {
-							$( '#' + monsterId).animate( { left: "-=" + ( scale / 10 ) },500,function() {
-							});
-						});
-					});
-				});
-				break;
-			case "up":
-				$('#' + attacker.id).animate( { top: "-=" + ( scale / 10 ) },250,function(){
-					$( '#' + attacker.id).animate( { top: "+=" + ( scale / 10 ) },500,function() {
-						$('#' + monsterId).animate( { top: "+=" + ( scale / 10 ) },250,function(){
-							$('#' + monsterId).animate( { top: "-=" + ( scale / 10 ) },500,function(){
-							});
-						});
-					});
-				});
-				break;
-			case "down":
-				$('#' + attacker.id).animate( { top: "+=" + ( scale / 10 ) },250,function(){
-					$('#' + attacker.id).animate( { top: "-=" + ( scale / 10 ) },500,function(){
-						$('#' + monsterId).animate( { top: "-=" + ( scale / 10 ) },250,function(){
-							$( '#' + monsterId).animate( { top: "+=" + ( scale / 10 ) },500,function() {
-							});
-						});
-					});
-				});
-				break;
+	defender.closest('div').append(display);
+	display.animate( {
+		opacity: 0,
+		top: "-=" + ( 3 * (scale / 10) )
+	}, 1000, function() {
+		$(this).remove();
+		//console.log(defender.id);
+		if ( defender.attr("id") == "player" ) {
+			console.log("here");
+			$("#player_currentHealth").html("current health: " + defender.data("stats").currentHealth +
+				"/" + defender.data("stats").health);
 		}
+	});
 }
 
 function monsterDead( monster ) {
