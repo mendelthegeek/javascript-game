@@ -366,7 +366,7 @@ function attack( attacker, defender ) {
 	
 	if (attacker.id == "player") {
 		fightAnimation( attacker, defender );
-	} else setTimeout( function() { $("#player_currentHealth").html( "current health: " + player.currentHealth + "/" + player.health ) }, 1000 );
+	} else setTimeout( function() { $("#player_currentHealth").html( "current health: " + player.currentHealth + "/" + player.health ) }, 1e3 );
 
 		if ( mouseIsOver == defender.id ) {
 			$("#displayHealth").html( "remaining health: <span>" + defender.currentHealth + "</span>" );
@@ -393,13 +393,13 @@ function attack( attacker, defender ) {
 		if( defender.name == "monster" ) {
 			$( "#" + displayHealthDivId ).delay( 250 ).animate( ObjectA,0);
 			$( "#" + displayHealthDivId ).html( healthLost );
-			$( "#" + displayHealthDivId )/*.delay( 1000 )*/.animate(  ObjectB,1000,function(){
+			$( "#" + displayHealthDivId )/*.delay( 1000 )*/.animate(  ObjectB,1e3,function(){
 				$( "#" + displayHealthDivId ).addClass("hide");
 				//$( "#" + displayHealthDivId ).animate( { opacity: 100,top: "+=25"},2);
 			});} else {
-			$( "#" + displayHealthDivId ).delay( 1000 ).animate( ObjectA,0);
+			$( "#" + displayHealthDivId ).delay( 1e3 ).animate( ObjectA,0);
 			$( "#" + displayHealthDivId ).html( healthLost );
-			$( "#" + displayHealthDivId ).animate(  ObjectB,1000,function(){
+			$( "#" + displayHealthDivId ).animate(  ObjectB,1e3,function(){
 				$( "#" + displayHealthDivId ).addClass("hide");
 			//	$( "#" + displayHealthDivId ).animate( { opacity: 100,top: "+=25"},0);
 			});}
