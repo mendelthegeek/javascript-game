@@ -166,21 +166,21 @@ gameBoard.innerHTML = boardHtml;
 }
 
 function insertMonsters() {
-	
-	for ( var i = 0 ; i < 10 ; i++ ) {
-		monsters[i] = new createMonster("monster",generateEmptySpot(),1);
-		document.getElementById(monsters[i].currentLocation).innerHTML = monsters[i].displayText;
+
+	var i = 0;
+
+	function loop(x,level){
+		for(; i < x; i++){
+			monsters[i] = new createMonster("monster",generateEmptySpot(),level);
+			document.getElementById(monsters[i].currentLocation).innerHTML = monsters[i].displayText;
+		}
 	}
 	
-	for ( var j = i ; j < 15 ; j++ ) {
-		monsters[j] = new createMonster("monster",generateEmptySpot(),2);
-		document.getElementById(monsters[j].currentLocation).innerHTML = monsters[j].displayText;
-	}
+	loop(10,1);
 	
-	for ( var k = j ; k < 20 ; k++ ) {
-		monsters[k] = new createMonster("monster",generateEmptySpot(),3);
-		document.getElementById(monsters[k].currentLocation).innerHTML = monsters[k].displayText;
-	}
+	loop(15,2)
+	
+	loop(20,3);
 }
 
 function generateEmptySpot() {
