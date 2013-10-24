@@ -380,17 +380,26 @@ function attack( attacker, defender ) {
 			
 			//console.log(defender.displayText);
 			
+			var ObjectA = { 
+				opacity: 100,
+				top: "+=" + ( 3 * ( scale / 10 ) ) 
+			}
+			
+			var ObjectB = {
+				opacity: 0,
+				top: "-=" + ( 3 * ( scale / 10 ) ) 
+			}
 
 		if( defender.name == "monster" ) {
-			$( "#" + displayHealthDivId ).delay( 250 ).animate( { opacity: 100,top: "+=" + ( 3 * ( scale / 10 ) ) },0);
+			$( "#" + displayHealthDivId ).delay( 250 ).animate( ObjectA,0);
 			$( "#" + displayHealthDivId ).html( healthLost );
-			$( "#" + displayHealthDivId )/*.delay( 1000 )*/.animate(  {opacity: 0,top: "-=" + ( 3 * ( scale / 10 ) ) },1000,function(){
+			$( "#" + displayHealthDivId )/*.delay( 1000 )*/.animate(  ObjectB,1000,function(){
 				$( "#" + displayHealthDivId ).addClass("hide");
 				//$( "#" + displayHealthDivId ).animate( { opacity: 100,top: "+=25"},2);
 			});} else {
-			$( "#" + displayHealthDivId ).delay( 1000 ).animate( { opacity: 100,top: "+=" + ( 3 * ( scale / 10 ) ) },0);
+			$( "#" + displayHealthDivId ).delay( 1000 ).animate( ObjectA,0);
 			$( "#" + displayHealthDivId ).html( healthLost );
-			$( "#" + displayHealthDivId ).animate(  {opacity: 0,top: "-=" + ( 3 * ( scale / 10 ) ) },1000,function(){
+			$( "#" + displayHealthDivId ).animate(  ObjectB,1000,function(){
 				$( "#" + displayHealthDivId ).addClass("hide");
 			//	$( "#" + displayHealthDivId ).animate( { opacity: 100,top: "+=25"},0);
 			});}
